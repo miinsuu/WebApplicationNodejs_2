@@ -1,0 +1,6 @@
+pm2 kill //모든 프로세스 종료
+
+pm2 start main.js --watch --ignore-watch="data/* sessions/*"  --no-daemon
+
+pm2 start main.js --watch --ignore-watch="data/*"  --no-daemon
+//pm2를 실행하면서 로그가 출력되도록 합니다. (--no-daemon) 또 특정 디랙토리(ex. data폴더)에 대한 watch를 하지 않도록 하는 방법입니다.
