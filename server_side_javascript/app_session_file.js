@@ -1,13 +1,15 @@
 var express= require('express');
 var session= require('express-session');
 var bodyParser=require('body-parser');
+var FileStore=require('session-file-store')(session);
 
 var app=express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
   secret: '1234DSFs@adf1234!@#$asd',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new FileStore()
 }));
 
 app.get('/count',function(req,res){
@@ -20,7 +22,9 @@ app.get('/count',function(req,res){
 });
 app.get('/auth/logout', function(req,res){
   delete req.session.displayName;
-  res.redirect('/welcome');
+  req.session.save(function(){
+    res.redirect('/welcome');
+  });
 });
 app.get('/welcome',function(req,res){
   if(req.session.displayName){
@@ -45,7 +49,9 @@ app.post('/auth/login',function(req,res){
   var pwd=req.body.password;
   if(uname===user.username&&pwd===user.password){
     req.session.displayName=user.displayName;
-    res.redirect('/welcome');
+    req.session.save(function(){
+      res.redirect('/welcome');
+    });
   } else{
     res.send('Who are you? <a href="/auth/login">login</a>');
   }
