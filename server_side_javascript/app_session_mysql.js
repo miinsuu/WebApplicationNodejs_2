@@ -13,7 +13,7 @@ app.use(session({
     host:'localhost',
     port:3307,
     user:'root',
-    password:'alstn2840',
+    password:'...',
     database:'o2'
   })
 }));
