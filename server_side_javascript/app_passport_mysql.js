@@ -11,7 +11,7 @@ var mysql= require('mysql');
 var conn = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'alstn2840',
+  password : '...',
   database : 'o2',
   port     : '3307'
 });
@@ -26,7 +26,7 @@ app.use(session({
     host:'localhost',
     port:3307,
     user:'root',
-    password:'alstn2840',
+    password:'...',
     database:'o2'
   })
 }));
@@ -157,8 +157,8 @@ app.post('/auth/login',
   )
 );
 passport.use(new FacebookStrategy({
-    clientID: '583876372024324',
-    clientSecret: 'fdf2148949754056028229a6c9326aa0',
+    clientID: '...',
+    clientSecret: '...',
     callbackURL: "/auth/facebook/callback",
     profileFields:['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName']
   },
