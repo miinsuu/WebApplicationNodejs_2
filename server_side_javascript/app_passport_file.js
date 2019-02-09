@@ -141,8 +141,8 @@ app.post('/auth/login',
   )
 );
 passport.use(new FacebookStrategy({
-    clientID: '583876372024324',
-    clientSecret: 'fdf2148949754056028229a6c9326aa0',
+    clientID: '...',
+    clientSecret: '...',
     callbackURL: "/auth/facebook/callback",
     profileFields:['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName']
   },
